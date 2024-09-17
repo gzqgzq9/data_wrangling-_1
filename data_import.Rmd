@@ -3,9 +3,10 @@ title: "Data Import"
 output: github_document
 ---
 
-```{r setup, echo = FALSE, messsage=FALSE}
+```{r setup, echo = FALSE, messsage = FALSE}
 library(tidyverse)
 library(readxl)
+library(haven)
 ```
 
 This document will show how to import data.
@@ -90,7 +91,21 @@ Import MLB 2011 summary data
 mlb_df = read_excel("data/mlb11.xlsx", sheet = "mlb11")
 ```
 
+## Import SAS data
 
+```{r}
+pulse_df = read_sas("data/public_pulse_data.sas7bdat")
+
+pulse_df
+```
+
+
+## Never use read.csv()
+
+Never do this either: dollar sign
+```{r}
+litters_df$L
+```
 
 
 
