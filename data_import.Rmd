@@ -1,0 +1,98 @@
+---
+title: "Data Import"
+output: github_document
+---
+
+```{r setup, echo = FALSE, messsage=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+This document will show how to import data.
+
+## Import the FAS Litters CSV
+```{r}
+litters_df = read_csv("data/FAS_litters.csv")
+
+litters_df = janitor::clean_names(litters_df)
+```
+
+### Look at the dataset
+```{r}
+litters_df
+
+head(litters_df)
+tail(litters_df, 10)
+```
+
+```{r eval = FALSE}
+view(litters_df)
+```
+
+## Import FAS Pups
+```{r}
+pups_df = read.csv("data/FAS_pups.csv")
+
+pups_df = janitor::clean_names(pups_df)
+
+pups_df
+```
+
+use absotlue path:
+```{r}
+pups_df = read.csv()
+```
+
+### Look ar read_csv options
+
+col_names and skipping rows
+
+```{r}
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv",
+    skip = 2
+  )
+```
+
+what about missing data
+```{r}
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv",
+    na = c("NA", "", ".")
+  )
+
+litters_df = janitor::clean_names(litters_df)
+
+pull(litters_df, gd0_weight)
+
+```
+
+What if we code `group` as a factor variable?
+
+```{r}
+litters_df = 
+  read_csv(
+    file = "data/FAS_litters.csv",
+    na = c("NA", "", "."),
+    col_types = cols(
+      Group = col_factor()
+    )
+  )
+```
+
+## Import an excel file
+
+Import MLB 2011 summary data
+
+```{r}
+mlb_df = read_excel("data/mlb11.xlsx", sheet = "mlb11")
+```
+
+
+
+
+
+
+
