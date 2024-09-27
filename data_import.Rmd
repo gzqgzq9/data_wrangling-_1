@@ -9,28 +9,47 @@ library(readxl)
 library(haven)
 ```
 
-This document will show how to import data.
+This document will show how to import data by relative path.Tabbed autocompletion can be used to find the data file. The only function I will use in `janitor` package is `clean names`, so i do not want to use library to load janitor package.
 
 ## Import the FAS Litters CSV
 ```{r}
 litters_df = read_csv("data/FAS_litters.csv")
-
 litters_df = janitor::clean_names(litters_df)
 ```
 
+
+ 
 ### Look at the dataset
+
+Printing in the console.
+
 ```{r}
 litters_df
+```
 
+Look at the first 6 rows and the tail of the dataset.
+
+```{r}
 head(litters_df)
 tail(litters_df, 10)
 ```
+
+Skim is the only function i will use in `skimr` package.
+
+```{r}
+skimr::skim(litters_df)
+```
+
 
 ```{r eval = FALSE}
 view(litters_df)
 ```
 
+
 ## Import FAS Pups
+
+Use relative paths:
+
 ```{r}
 pups_df = read.csv("data/FAS_pups.csv")
 
@@ -39,24 +58,21 @@ pups_df = janitor::clean_names(pups_df)
 pups_df
 ```
 
-use absotlue path:
-```{r}
-pups_df = read.csv()
-```
 
-### Look ar read_csv options
 
-col_names and skipping rows
+### Look at read_csv options
+
+skipping the first two row (since most data file has data dictionary in the first two rows) and use `col_names = FALSE` make up colum names 
 
 ```{r}
 litters_df = 
   read_csv(
-    file = "data/FAS_litters.csv",
-    skip = 2
+    file = "data/FAS_litters.csv"
   )
 ```
 
-what about missing data
+What about missing data.
+
 ```{r}
 litters_df = 
   read_csv(
@@ -81,15 +97,20 @@ litters_df =
       Group = col_factor()
     )
   )
+
+litters_df
 ```
+
+
 
 ## Import an excel file
 
-Import MLB 2011 summary data
+Import MLB 2011 summary data and use `sheet=` to choose sheet if there are many sheets. `Range=` specify the range of columns and rows using Excel syntax (like B6 to G18).
 
 ```{r}
 mlb_df = read_excel("data/mlb11.xlsx", sheet = "mlb11")
 ```
+
 
 ## Import SAS data
 
@@ -103,6 +124,7 @@ pulse_df
 ## Never use read.csv()
 
 Never do this either: dollar sign
+
 ```{r}
 litters_df$L
 ```
