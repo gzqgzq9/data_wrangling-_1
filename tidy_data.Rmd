@@ -1,0 +1,9 @@
+---
+title: "Tidy Data"
+output: github_document
+---
+
+```{r setup, echo = FALSE, messsage = FALSE}
+library(tidyverse)
+```
+
