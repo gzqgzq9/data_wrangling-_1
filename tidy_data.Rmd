@@ -109,7 +109,7 @@ Import and clean the FAS datasets.
 pups_df = 
   read_csv("data/FAS_pups.csv") %>% 
   janitor::clean_names() %>% 
-  mutate(sex = recode(sex, `1` = "male", `2` = "female"))
+  mutate(sex = recode(sex, 1 = "male", 2 = "female"))
 
 litters_df =
   read_csv("data/FAS_litters.csv") %>% 

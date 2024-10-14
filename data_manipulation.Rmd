@@ -94,14 +94,14 @@ filter(litters_df, gd_of_birth != 20)
 ```
 
 ```{r}
-filter(litters_df, gd0_weight >= 22,gd_of_birth == 20)
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
 ```
 
 ```{r}
 filter(litters_df, group == "Mod8")
 ```
 
-Where group is either `of these option`Mod8` or `Con7`
+Where group is either of these option`Mod8` or `Con7`
 
 ```{r}
 filter(litters_df, group %in% c("Mod8", "Con7"))
@@ -152,7 +152,7 @@ litters_df =
   mutate(wt_gain = gd18_weight - gd0_weight) |> 
   drop_na(gd0_weight)
 ```
-
+check
 
 
 

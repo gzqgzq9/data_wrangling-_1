@@ -306,7 +306,7 @@ filter(litters_df, gd_of_birth != 20)
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
 
 ``` r
-filter(litters_df, gd0_weight >= 22,gd_of_birth == 20)
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
 ```
 
     ## # A tibble: 16 × 8
@@ -346,7 +346,7 @@ filter(litters_df, group == "Mod8")
     ## 7 Mod8  #82/4               33.4        52.7          20               8
     ## # ℹ 2 more variables: pups_dead_birth <dbl>, pups_survive <dbl>
 
-Where group is either `of these option`Mod8`or`Con7\`
+Where group is either of these option`Mod8` or `Con7`
 
 ``` r
 filter(litters_df, group %in% c("Mod8", "Con7"))
@@ -456,3 +456,5 @@ litters_df =
     ## 
     ## ℹ Use `spec()` to retrieve the full column specification for this data.
     ## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+check
